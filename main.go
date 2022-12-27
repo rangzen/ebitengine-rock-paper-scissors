@@ -71,10 +71,15 @@ type Game struct {
 }
 
 func (g *Game) Update() error {
+	var next [nbObj]Obj
 	for i := 0; i < nbObj; i++ {
-		g.o[i].x += rand.Intn(3) - 1
-		g.o[i].y += rand.Intn(3) - 1
+		next[i] = Obj{
+			r: g.o[i].r,
+			x: g.o[i].x + rand.Intn(3) - 1,
+			y: g.o[i].y + rand.Intn(3) - 1,
+		}
 	}
+	g.o = next
 	return nil
 }
 
