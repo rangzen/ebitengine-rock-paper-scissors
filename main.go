@@ -16,7 +16,9 @@ const (
 	screenHeight = 600
 	objWidth     = 48 / 2
 	objHeight    = 48 / 2
-	nbObjects    = 50
+	nbType       = 3
+	nbObjPerType = 50
+	nbObj        = nbObjPerType * nbType
 )
 
 // States
@@ -65,11 +67,11 @@ type Obj struct {
 }
 
 type Game struct {
-	o [nbObjects]Obj
+	o [nbObj]Obj
 }
 
 func (g *Game) Update() error {
-	for i := 0; i < nbObjects; i++ {
+	for i := 0; i < nbObj; i++ {
 		g.o[i].x += rand.Intn(3) - 1
 		g.o[i].y += rand.Intn(3) - 1
 	}
@@ -97,9 +99,10 @@ func (g *Game) Layout(_, _ int) (int, int) {
 }
 
 func (g *Game) Init() {
-	for i := 0; i < nbObjects; i++ {
+	log.Println("Initiating game")
+	for i := 0; i < nbObj; i++ {
 		g.o[i] = Obj{
-			r: rand.Intn(3),
+			r: i % 3,
 			x: rand.Intn(screenWidth * 2),
 			y: rand.Intn(screenHeight * 2),
 		}
