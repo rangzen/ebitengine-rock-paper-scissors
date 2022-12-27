@@ -21,9 +21,9 @@ const (
 
 // States
 const (
-	rock     = iota
-	paper    = iota
-	scissors = iota
+	rock = iota
+	paper
+	scissors
 )
 
 //go:embed resources/icons8-rock-48.png
