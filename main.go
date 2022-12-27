@@ -12,13 +12,13 @@ import (
 
 // GUI
 const (
-	screenWidth  = 300
-	screenHeight = 600
-	objWidth     = 48 / 2
-	objHeight    = 48 / 2
-	nbType       = 3
-	nbObjPerType = 50
-	nbObj        = nbObjPerType * nbType
+	screenWidth   = 300
+	screenHeight  = 600
+	objHalfWidth  = 48 / 2
+	objHalfHeight = 48 / 2
+	nbType        = 3
+	nbObjPerType  = 50
+	nbObj         = nbObjPerType * nbType
 )
 
 // States
@@ -82,7 +82,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	// ebitenutil.DebugPrint(screen, "Rock Paper Scissors")
 	for _, o := range g.o {
 		op := &ebiten.DrawImageOptions{}
-		op.GeoM.Translate(float64(o.x-objWidth), float64(o.y-objHeight))
+		op.GeoM.Translate(float64(o.x-objHalfWidth), float64(o.y-objHalfHeight))
 		switch o.r {
 		case rock:
 			screen.DrawImage(rockImg, op)
