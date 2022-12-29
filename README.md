@@ -20,6 +20,14 @@ To build the game, run the following command:
 go build
 ```
 
+## Building the WebAssembly version
+
+To build the WebAssembly version, run the following command:
+
+```bash
+GOOS=js GOARCH=wasm go build -o ebitengine-rock-paper-scissors.wasm github.com/rangzen/ebitengine-rock-paper-scissors
+```
+
 ## Resources
 
 * <a target="_blank" href="https://icons8.com/icon/9FSQ5judlnAN/rock">Rock</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
