@@ -4,6 +4,7 @@ import (
 	"bytes"
 	_ "embed"
 	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/inpututil"
 	"image"
 	_ "image/png"
 	"log"
@@ -67,10 +68,18 @@ type Obj struct {
 }
 
 type Game struct {
-	o [nbObj]Obj
+	paused bool
+	o      [nbObj]Obj
 }
 
 func (g *Game) Update() error {
+	spacePressed := inpututil.IsKeyJustReleased(ebiten.KeySpace)
+	if spacePressed {
+		g.paused = !g.paused
+	}
+	if g.paused {
+		return nil
+	}
 	var next [nbObj]Obj
 	for i := 0; i < nbObj; i++ {
 		next[i] = Obj{
