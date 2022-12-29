@@ -1,4 +1,4 @@
-module ebitengine-rock-paper-scissors
+module github.com/rangzen/ebitengine-rock-paper-scissors
 
 go 1.19
 
