@@ -1,8 +1,10 @@
-# Ebiten Rock Paper Scissors
+# Rock Paper Scissors War
 
 This is a simple rock paper scissors game written in Go using the [Ebitengine](https://ebitengine.org/) game library.
 
 I wanted my own version of https://9gag.com/gag/ap92GVn.
+
+You can see an online version at https://rangzen.github.io/ebitengine-rock-paper-scissors/.
 
 ## Running
 
