@@ -31,7 +31,7 @@ jobs:
     - name: Build Web Assembly artifact
       run: GOOS=js GOARCH=wasm go build -o ebitengine-rock-paper-scissors.wasm github.com/rangzen/ebitengine-rock-paper-scissors
 
-    - name: Archive Web Assembly artifact
+    - name: Upload Web Assembly artifact
       uses: actions/upload-artifact@v3
       with:
         name: wasm
@@ -42,6 +42,7 @@ jobs:
 
   deploy:
     name: Deploy to GitHub pages
+    needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
