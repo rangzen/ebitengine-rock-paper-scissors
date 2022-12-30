@@ -12,6 +12,7 @@ on:
 jobs:
 
   build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -38,3 +39,33 @@ jobs:
 
     - name: Test
       run: go test -v ./...
+
+  deploy:
+    name: Deploy to GitHub pages
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+        
+      - name: Download Web Assembly artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: wasm
+          
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: |
+            ebitengine-rock-paper-scissors.wasm
+            wasm_exec.js
+            ebitengine-rock-paper-scissors.html
+          
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
