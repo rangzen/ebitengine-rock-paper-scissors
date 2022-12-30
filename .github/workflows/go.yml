@@ -26,6 +26,15 @@ jobs:
 
     - name: Build
       run: go build -v ./...
+      
+    - name: Build Web Assembly artifact
+      run: GOOS=js GOARCH=wasm go build -o ebitengine-rock-paper-scissors.wasm github.com/rangzen/ebitengine-rock-paper-scissors
+
+    - name: Archive Web Assembly artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: wasm
+        path: ebitengine-rock-paper-scissors.wasm
 
     - name: Test
       run: go test -v ./...
