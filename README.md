@@ -8,10 +8,18 @@ You can see an online version at https://rangzen.github.io/ebitengine-rock-paper
 
 ## Running
 
-To run the game, you need to have Go installed. Then, run the following command:
+To run the game, you need to have Go installed.
+
+Then, run the following command if you have cloned the repository:
 
 ```bash
 go run main.go
+```
+
+or simply
+
+```bash
+go run github.com/rangzen/ebitengine-rock-paper-scissors@latest
 ```
 
 ## Building
